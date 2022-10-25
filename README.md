@@ -1,7 +1,14 @@
 ![Node.js CI](https://github.com/nodeshift-starters/nodejs-health-check/workflows/ci/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/nodeshift-starters/nodejs-health-check/badge.svg?branch=main)](https://coveralls.io/github/nodeshift-starters/nodejs-health-check?branch=main) 
 
-Example Health Check Application
+Using Openhsift Binary Builds to Package NodeJS Applications into Images Using S2I Images with Opesnhift
+
+## Relevenat Links
+* [Creating images from source code with source-to-image](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html/images/creating-images#images-create-s2i_create-images)
+* [Images](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html/images/index)
+* [Creating applications using the CLI](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html-single/building_applications/* index#creating-applications-using-cli)
+* [Building Applications](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html/building_applications/index)
+
 
 ## Running The Example
 
@@ -24,16 +31,33 @@ Other options:
 * `npm run dev` same as `npm start` but with pretty output log.
 * `npm run dev:debug` shows debug information. 
 
-### OpenShift Local
+### OpenShift
 
-OpenShift Local should be started, and you should be logged in with a currently
+#### Using Openshift Builds Directly
+
+An OpenShift cluster should be available, and you should be logged in with a currently
+active project. A buildconfig will be created and then the source will be piped to a
+new build with the resulting image being used as the image for a new application deployment.
+
+```sh
+$ oc login -u developer # Login
+$ oc project <project_name> # Set the current project to deploy to
+$ oc get is -n openshift | grep nodejs # Retrieve the current image streams in the openshift project and filter on those for nodejs
+$ oc new-build --name <build_and_image_name> --binary -i <source_S2I_image> -e NPM_MIRROR=<npm_mirror_url> # Create a buildconfig and imagestream for the resultant image
+$ oc start-build <build_and_image_name> --from-dir=./
+```
+
+[Source-to-Image for NodeJS](https://github.com/sclorg/s2i-nodejs-container)
+[Environment variables for Source-to-Image for NodeJS 16](https://github.com/sclorg/s2i-nodejs-container/tree/master/16)
+
+#### Using NodeShift Plugin
+
+An OpenShift cluster should be available, and you should be logged in with a currently
 active project. Then run the `npm run openshift` command.
 
 ```sh
-$ crc setup # Set-up the hypervisor
-$ crc start # Initialize the openshift cluster
 $ oc login -u developer # Login
-$ oc new-project my-example-project # Create a project to deploy to
+$ oc project <project_name> # Set the current project to deploy to
 $ npm run openshift # Deploys the example app
 ```
 
