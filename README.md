@@ -3,7 +3,7 @@
 
 Using Openhsift Binary Builds to Package NodeJS Applications into Images Using S2I Images with Opesnhift
 
-## Relevenat Links
+## Relevent Links
 * [Creating images from source code with source-to-image](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html/images/creating-images#images-create-s2i_create-images)
 * [Images](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html/images/index)
 * [Creating applications using the CLI](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.11/html-single/building_applications/index#creating-applications-using-cli)
