@@ -52,8 +52,8 @@ $ oc start-build <build_and_image_name> --from-dir=./
 * Where <source_S2I_image> is the image stream location of the base nodejs S2I image, in the openshift directory, i.e: openshift/nodejs:14-ubi8
 * (Optional) Where <npm_mirror_url> is the URL to a local / corporate NPM mirror
 
-[Source-to-Image for NodeJS](https://github.com/sclorg/s2i-nodejs-container)
-[Environment variables for Source-to-Image for NodeJS 16](https://github.com/sclorg/s2i-nodejs-container/tree/master/16)
+* [Source-to-Image for NodeJS](https://github.com/sclorg/s2i-nodejs-container)
+* [Environment variables for Source-to-Image for NodeJS 16](https://github.com/sclorg/s2i-nodejs-container/tree/master/16)
 
 #### Using NodeShift Plugin
 
