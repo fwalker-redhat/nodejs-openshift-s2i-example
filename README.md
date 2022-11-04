@@ -40,13 +40,13 @@ active project. A buildconfig will be created and then the source will be piped 
 new build with the resulting image being used as the image for a new application deployment.
 
 ```sh
-$ oc login -u <username> # Login
+$ oc login -u <user_name> # Login
 $ oc project <project_name> # Set the current project to deploy to
 $ oc get is -n openshift | grep nodejs # Retrieve the current image streams in the openshift project and filter on those for nodejs
 $ oc new-build --name <build_and_image_name> --binary -i <source_S2I_image> -e NPM_MIRROR=<npm_mirror_url> # Create a buildconfig and imagestream for the resultant image
 $ oc start-build <build_and_image_name> --from-dir=./
 ```
-* Where <username> is the username of an Openshift account that has access to the destination project
+* Where <user_name> is the username of an Openshift account that has access to the destination project
 * Where <project_name> is the name of the destination project
 * Where <build_and_image_name> is the name that will be used for the buildConfig and the resulting image
 * Where <source_S2I_image> is the image stream location of the base nodejs S2I image, in the openshift directory, i.e: openshift/nodejs:14-ubi8
